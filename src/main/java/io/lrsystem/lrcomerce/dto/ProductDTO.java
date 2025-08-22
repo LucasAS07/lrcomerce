@@ -1,14 +1,26 @@
 package io.lrsystem.lrcomerce.dto;
 
 import io.lrsystem.lrcomerce.entities.Product;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
 public class ProductDTO {
 
     private Long id;
+
+    @Size(min = 3,max = 80,message = "Nome deve ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo não pode ser em branco")
     private String name;
+
+    @Size(min = 10, message = "Campo de ter no minimo 10 caracters")
+    @NotBlank(message = "Campo não pode ser em branco")
     private String description;
+
+    @PositiveOrZero(message = "Prço deve ser positivo")
     private Double price;
     private String imgUrl;
 
